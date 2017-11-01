@@ -29,4 +29,4 @@ gulp.task('default', ['reset', 'imgMin'], () =>
             rewriteUrlsInTemplates: false,
             stripComments: true
           } ))
-        .pipe(gulp.dest('dist')))
+        .pipe(gulp.dest('dist'))) 
