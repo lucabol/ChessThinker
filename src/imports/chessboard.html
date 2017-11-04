@@ -1,0 +1,51 @@
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="../../libs/chessboardjs/js/chessboard-0.3.0.min.js"></script>
+<link rel="stylesheet" href="../../libs/chessboardjs/css/chessboard-0.3.0.min.css"></link>
+
+<style>
+    #___chessboard___ {
+      width:50%;
+    }
+</style>
+
+<script>
+  ;(() => {
+    'use strict'
+    /* global LEvents, ChessBoard */
+
+    // Import all import defined styles
+    let importDoc = document.currentScript.ownerDocument
+    let styles = importDoc.querySelectorAll('link')
+    for (let i = 0; i < styles.length; i++) {
+      document.head.appendChild(styles[i])
+    }
+
+    styles = importDoc.querySelectorAll('style')
+    for (let i = 0; i < styles.length; i++) {
+      document.head.appendChild(styles[i])
+    }
+
+    class MyChessBoard extends HTMLElement {
+      connectedCallback () {
+        this.innerHTML = '<div id="___chessboard___"></div>'
+        let cfg = {
+          position: 'start',
+          draggable: true,
+          dropOffBoard: 'trash',
+          sparePieces: true,
+          onChange: this.onChange
+        }
+        let board = ChessBoard('___chessboard___', cfg)
+        window.addEventListener('resize', board.resize)
+
+        LEvents.on('test', (e) => console.log(`Data is: ${e.detail.id}`))
+      }
+      disconnectedCallbak () {
+      }
+      attributeChangedCallback (name, oldValue, newValue) {
+      }
+    }
+
+    customElements.define('chess-board', MyChessBoard)
+})()
+</script>

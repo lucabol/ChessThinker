@@ -1,15 +1,15 @@
 <script>
-    var LEvents = (function() {
+  window.LEvents = (function () {
+    const dummy = document.createTextNode('')
 
-        const dummy = document.createTextNode('')
-        
-        return {
-            off: dummy.removeEventListener.bind(dummy),
-            on: dummy.addEventListener.bind(dummy),
-            trigger: function(eventName, data){
-                if( !eventName ) return
-                var e = new CustomEvent(eventName, {detail:data})
-                dummy.dispatchEvent(e)
-            }
-        }})()
+    return {
+      off: dummy.removeEventListener.bind(dummy),
+      on: dummy.addEventListener.bind(dummy),
+      trigger: function (eventName, data) {
+        if (!eventName) return
+        var e = new CustomEvent(eventName, {detail: data})
+        dummy.dispatchEvent(e)
+      }
+    }
+  })()
 </script>

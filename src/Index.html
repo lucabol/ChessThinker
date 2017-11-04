@@ -3,32 +3,19 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>simple-web-component Demo</title>
-    <link rel="stylesheet" href="../libs/chessboardjs/css/chessboard-0.3.0.css">
-    
+    <title>Chess Thinker</title>
     <script src="https://unpkg.com/@webcomponents/webcomponentsjs@^1.0.0/webcomponents-loader.js"></script>
     
     <link rel="import" href="imports/levents.html">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script rel="import" src="../libs/chessboardjs/js/chessboard-0.3.0.min.js"> </script>
-<style>
-#board {
-  width:100%;
-}
-</style>
+    <link rel="import" href="imports/chessboard.html">
 </head>
 
   <body>
-    <div>
-      <div id="board"></div>
-    </div>
+    <div id="aboard"></div>
+    <chess-board></chess-board>
       <script>
         'use strict'
-        var board = ChessBoard('board', 'start')
-        window.addEventListener("resize", board.resize)
-
         window.addEventListener('WebComponentsReady', e => {
-          console.log('Components are ready')
         })
       </script>
   </body>
